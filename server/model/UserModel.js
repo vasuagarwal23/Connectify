@@ -14,10 +14,12 @@ const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: false,
+    match: [/^[a-zA-Z]+$/, "First name can only contain letters"],
   },
   lastName: {
     type: String,
     required: false,
+    match: [/^[a-zA-Z]+$/, "Last name can only contain letters"],
   },
   image: {
     type: String,
