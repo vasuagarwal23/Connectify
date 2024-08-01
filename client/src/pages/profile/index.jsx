@@ -14,7 +14,7 @@ import { FaPlus, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { IoArrowBack } from "react-icons/io5";
-import { colors } from "@/lib/utils";
+import { colors, getColor } from "@/lib/utils";
 
 const Profile = () => {
   const { userInfo, setUserInfo } = useAppStore();
@@ -22,6 +22,7 @@ const Profile = () => {
   const [lastName, setLastName] = useState("");
   const [image, setImage] = useState(null);
   const [hovered, setHovered] = useState(false);
+  // Access the input element directly using the ref
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState(0);
@@ -63,7 +64,7 @@ const Profile = () => {
         );
         if (response.status === 200 && response.data) {
           setUserInfo({ ...response.data });
-          toast.success("Profile Updated Successfully.");
+          toast.success("Profile Updated Successfull y.");
           navigate("/chat");
         }
       } catch (error) {
@@ -74,6 +75,7 @@ const Profile = () => {
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
+    //console.log(file);
     if (file) {
       const formData = new FormData();
       formData.append("profile-image", file);
@@ -143,7 +145,7 @@ const Profile = () => {
                 />
               ) : (
                 <div
-                  className={`uppercase h-32 w-32 md:w-48 md:h-48  text-5xl bg-[#712c4a57] text-[#ff006e] border-[1px] border-[#ff006faa] flex items-center justify-center rounded-full`}
+                  className={`uppercase h-32 w-32 md:w-48 md:h-48  text-5xl bg-[#712c4a57] text-[#ff006e] border-[1px] border-[#ff006faa] flex items-center justify-center rounded-full ${getColor(selectedColor)}`}
                 >
                   {firstName
                     ? firstName.split("").shift()
@@ -160,7 +162,8 @@ const Profile = () => {
                   <FaTrash className="text-white text-3xl cursor-pointer" />
                 ) : (
                   <FaPlus className="text-white text-3xl cursor-pointer" />
-                )}
+                )
+                }
               </div>
             )}
             <input
@@ -203,11 +206,10 @@ const Profile = () => {
             <div className="w-full flex gap-5">
               {colors.map((color, index) => (
                 <div
-                  className={`${color} h-8 w-8 rounded-full cursor-pointer transition-all duration-100 ${
-                    selectedColor === index
-                      ? " outline outline-white outlin4"
+                  className={`${color} h-8 w-8 rounded-full cursor-pointer transition-all duration-100 ${selectedColor === index
+                      ? " outline outlin4"
                       : ""
-                  }`}
+                    }`}
                   key={index}
                   onClick={() => setSelectedColor(index)}
                 ></div>

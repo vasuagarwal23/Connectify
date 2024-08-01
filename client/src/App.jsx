@@ -54,7 +54,7 @@ function App() {
   }, [userInfo, setUserInfo]);
 
   if (loading) {
-    return <div>Loading...</div>; // Show a loading indicator while fetching user data
+    return <div>Loading...</div>; 
   }
 
   return (
