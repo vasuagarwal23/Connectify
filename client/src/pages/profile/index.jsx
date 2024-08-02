@@ -14,7 +14,8 @@ import { FaPlus, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { IoArrowBack } from "react-icons/io5";
-import { colors, getColor } from "@/lib/utils";
+import { colors } from "@/lib/utils";
+import { getColor } from "@/lib/utils";
 
 const Profile = () => {
   const { userInfo, setUserInfo } = useAppStore();
@@ -22,10 +23,9 @@ const Profile = () => {
   const [lastName, setLastName] = useState("");
   const [image, setImage] = useState(null);
   const [hovered, setHovered] = useState(false);
-  // Access the input element directly using the ref
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
-  const [selectedColor, setSelectedColor] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(1);
 
   useEffect(() => {
     if (userInfo.profileSetup) {
@@ -64,7 +64,7 @@ const Profile = () => {
         );
         if (response.status === 200 && response.data) {
           setUserInfo({ ...response.data });
-          toast.success("Profile Updated Successfull y.");
+          toast.success("Profile Updated Successfully.");
           navigate("/chat");
         }
       } catch (error) {
@@ -75,7 +75,6 @@ const Profile = () => {
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
-    //console.log(file);
     if (file) {
       const formData = new FormData();
       formData.append("profile-image", file);
@@ -162,8 +161,7 @@ const Profile = () => {
                   <FaTrash className="text-white text-3xl cursor-pointer" />
                 ) : (
                   <FaPlus className="text-white text-3xl cursor-pointer" />
-                )
-                }
+                )}
               </div>
             )}
             <input
@@ -203,11 +201,12 @@ const Profile = () => {
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-            <div className="w-full flex gap-5">
+            <div className="w-full flex gap-20">
               {colors.map((color, index) => (
                 <div
-                  className={`${color} h-8 w-8 rounded-full cursor-pointer transition-all duration-100 ${selectedColor === index
-                      ? " outline outlin4"
+                  className={`${color} h-8 w-8 rounded-full cursor-pointer transition-all duration-100 
+                  ${selectedColor === index
+                      ? " outline outline-white/50 outlin4"
                       : ""
                     }`}
                   key={index}

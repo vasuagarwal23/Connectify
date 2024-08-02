@@ -50,7 +50,7 @@ const ContactList = ({ contacts, isChannel = false }) => {
                       : getColor(contact.color)
                   } h-10 w-10 flex items-center justify-center rounded-full`}
                 >
-                  {contact.firstName.split("").shift()}
+                  {contact.email.split("").shift()}
                 </AvatarFallback>
               </Avatar>
             )}

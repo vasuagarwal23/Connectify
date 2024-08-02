@@ -40,8 +40,6 @@ const setupSocket = (server) => {
     if (recipientSocketId) {
       io.to(recipientSocketId).emit("receiveMessage", messageData);
     }
-
-    // Optionally, send the message back to the sender (e.g., for message confirmation)
     if (senderSocketId) {
       io.to(senderSocketId).emit("receiveMessage", messageData);
     }

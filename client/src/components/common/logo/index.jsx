@@ -7,7 +7,7 @@ const Logo = () => {
         height="32"
         viewBox="0 0 78 32"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/1000/svg"
       >
         {" "}
         <path
@@ -26,7 +26,7 @@ const Logo = () => {
           fill="#a16ee8"
         ></path>{" "}
       </svg>
-      <span className="text-3xl font-semibold ">Syncronus</span>
+      <span className="text-3xl font-semibold ">Connectify</span>
     </div>
   );
 };

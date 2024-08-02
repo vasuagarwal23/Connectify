@@ -44,6 +44,7 @@ export const searchContacts = async (request, response, next) => {
         },
       ],
     });
+    console.log(contacts);
     return response.status(200).json({ contacts });
   } catch (error) {
     console.log({ error });
@@ -54,8 +55,9 @@ export const searchContacts = async (request, response, next) => {
 export const getContactsForList = async (req, res, next) => {
   try {
     let { userId } = req;
-    userId = new mongoose.Types.ObjectId(userId);
 
+    userId = new mongoose.Types.ObjectId(userId);
+    // console.log(userId);
     if (!userId) {
       return res.status(400).send("User ID is required.");
     }

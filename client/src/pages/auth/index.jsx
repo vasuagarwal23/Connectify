@@ -45,11 +45,13 @@ const Auth = () => {
   const handleLogin = async () => {
     try {
       if (validateLogin()) {
+        console.log('Sending login request:', { email, password });
         const response = await apiClient.post(
           LOGIN_ROUTE,
           { email, password },
           { withCredentials: true }
         );
+        console.log('Login response:', response);
         if (response.data.user.id) {
           setUserInfo(response.data.user);
           if (response.data.user.profileSetup) navigate("/chat");
@@ -59,7 +61,8 @@ const Auth = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error.response.data);
+      toast.error("Login failed. Please check your credentials.");
     }
   };
 
