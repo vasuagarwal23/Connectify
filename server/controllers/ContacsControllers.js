@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import User from "../model/UserModel.js";
 import Message from "../model/MessagesModel.js";
 
-export const getAllContacts = async (request, response, next) => {
+export const getAllContacts = async (request, response) => {
   try {
     const users = await User.find(
       { _id: { $ne: request.userId } },
@@ -21,7 +21,7 @@ export const getAllContacts = async (request, response, next) => {
   }
 };
 
-export const searchContacts = async (request, response, next) => {
+export const searchContacts = async (request, response) => {
   try {
     const { searchTerm } = request.body;
 

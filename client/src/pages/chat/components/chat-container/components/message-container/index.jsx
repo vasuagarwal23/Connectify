@@ -73,7 +73,7 @@ const MessageContainer = () => {
     setIsDownloading(true);
     setDownloadProgress(0);
     const response = await apiClient.get(`${HOST}/${url}`, {
-      responseType: "blob",
+      responseType: "blob",//binary large object
       onDownloadProgress: (progressEvent) => {
         const { loaded, total } = progressEvent;
         const percentCompleted = Math.round((loaded * 100) / total);
@@ -83,8 +83,8 @@ const MessageContainer = () => {
     const urlBlob = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
     link.href = urlBlob;
-    link.setAttribute("download", url.split("/").pop()); // Optional: Specify a file name for the download
-    document.body.appendChild(link);
+    link.setAttribute("download", url.split("/").pop());
+    document.body.appenFdChild(link);
     link.click();
     link.remove();
     window.URL.revokeObjectURL(urlBlob); // Clean up the URL object

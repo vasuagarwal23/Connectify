@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import Channel from "../model/ChannelModel.js";
 import User from "../model/UserModel.js";
 
-export const createChannel = async (request, response, next) => {
+export const createChannel = async (request, response) => {
   try {
     const { name, members } = request.body;
     const userId = request.userId;
@@ -17,7 +17,6 @@ export const createChannel = async (request, response, next) => {
         .status(400)
         .json({ message: "Some members are not valid users." });
     }
-
     const newChannel = new Channel({
       name,
       members,
@@ -47,7 +46,7 @@ export const getUserChannels = async (req, res) => {
   }
 };
 
-export const getChannelMessages = async (req, res, next) => {
+export const getChannelMessages = async (req, res) => {
   try {
     const { channelId } = req.params;
 

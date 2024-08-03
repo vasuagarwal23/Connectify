@@ -33,7 +33,6 @@ export const uploadFile = async (request, response, next) => {
 
       // Create directory if it doesn't exist
       mkdirSync(fileDir, { recursive: true });
-
       renameSync(request.file.path, fileName);
       return response.status(200).json({ filePath: fileName });
     } else {

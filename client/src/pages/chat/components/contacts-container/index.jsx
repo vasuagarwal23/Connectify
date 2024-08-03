@@ -63,7 +63,7 @@ const ContactsContainer = () => {
           <CreateChannel />
         </div>
         <div className="max-h-[37vh] overflow-y-auto scrollbar-hidden pb-5">
-          <ContactList contacts={channels} isChannel />
+          <ContactList contacts={channels} isChannel={true}/>
         </div>
       </div>
       <ProfileInfo />

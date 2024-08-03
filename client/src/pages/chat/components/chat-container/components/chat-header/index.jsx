@@ -40,12 +40,12 @@ const ChatHeader = () => {
             )}
           </div>
           <div>
-            {/* {selectedChatType === "channel" && selectedChatData.name} */}
+            {selectedChatType === "channel" && selectedChatData.name}
             {selectedChatType === "contact" &&
               selectedChatData.firstName &&
               selectedChatData.lastName
               ? `${selectedChatData.firstName} ${selectedChatData.lastName}`
-              : "vasu"}
+              : ""}
           </div>
         </div>
       </div>
