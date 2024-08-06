@@ -42,8 +42,8 @@ const ChatHeader = () => {
           <div>
             {selectedChatType === "channel" && selectedChatData.name}
             {selectedChatType === "contact" &&
-              selectedChatData.firstName &&
-              selectedChatData.lastName
+            selectedChatData.firstName &&
+            selectedChatData.lastName
               ? `${selectedChatData.firstName} ${selectedChatData.lastName}`
               : ""}
           </div>
