@@ -16,12 +16,6 @@ export const signup = async (req, res, next) => {
     const { email, password } = req.body;
     if (email && password) {
       const user = await User.create({ email, password });
-      res.cookie("jwt", createToken(email, user.id), {
-        maxAge,
-        secure: true,
-        sameSite: "None",
-      });
-
       return res.status(201).json({
         user: {
           id: user?.id,
